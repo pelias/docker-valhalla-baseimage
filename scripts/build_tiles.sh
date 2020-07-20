@@ -25,6 +25,10 @@ if [[ ${#PBF_FILES[@]} -eq 0 ]]; then
   exit 1;
 fi
 
+# change directory to the temp dir since Valhalla writes some files to CWD
+# see: https://github.com/valhalla/docker/issues/42
+cd "${VALHALLA_TMP_DIR}"
+
 # generate tiles
 # note: we should include ALL files in the array, not only the first
 # note: it's not clear from the Valhalla docs if this is possible?
